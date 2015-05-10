@@ -26,11 +26,13 @@ hpc$datetime <- strptime(paste(hpc$date, hpc$time), "%Y-%m-%d %H:%M:%S")
 
 png(filename = './plot3.png', width = 480, height = 480)
 
-with(hpc, plot(datetime, sub_metering_1, type="l", col="black",
-               xlab="",ylab="Energy sub metering"))
-with(hpc, points(datetime, sub_metering_2, type="l", col="red"))
-with(hpc, points(datetime, sub_metering_3, type="l", col="blue"))
-legend("topright", col = c("black","red", "blue"), lwd=2, 
-       legend = c("sub_metering_1", "sub_metering_2", "sub_metering_3"))
+with(hpc, {
+  plot(datetime, sub_metering_1, type="l", col="black",
+               xlab="",ylab="Energy sub metering")
+  points(datetime, sub_metering_2, type="l", col="red")
+  points(datetime, sub_metering_3, type="l", col="blue")
+  legend("topright", col = c("black","red", "blue"), lwd=2, 
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+})
 
 dev.off()

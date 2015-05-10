@@ -13,13 +13,15 @@ unlink(file)
 
 names(df) <- tolower(names(df))
 df$date <- as.Date(df$date,format='%d/%m/%Y')
-df$time <- strptime(df$time)
-df$global_active_power <- as.numeric(as.character(df$global_active_power))
 
 
 hpc <- filter(df, date >= '2007-02-01' & date <= '2007-02-02')
 
+hpc$global_active_power <- as.numeric(as.character(hpc$global_active_power))
+
 png(filename = './plot1.png', width = 480, height = 480)
+
 hist(hpc$global_active_power, col = 'red', xlab = 'Global Active Power (kilowatts)', 
      main = 'Global Active Power')
+
 dev.off()
